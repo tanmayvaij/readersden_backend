@@ -1,12 +1,12 @@
 import express from "express"
 import { config } from "dotenv"
 import { connectDB } from "./db"
-
+import cors from "cors"
 
 // inititalised environment variables
 config()
 
-const PORT = 5000
+const PORT = 5000 || process.env.PORT
 
 const app = express()
 
@@ -14,7 +14,7 @@ const app = express()
 // added middlewares
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
-
+app.use(cors())
 
 // importing routers
 import AuthRouter from "./routes/Auth"

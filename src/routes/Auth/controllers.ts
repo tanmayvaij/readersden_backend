@@ -34,5 +34,9 @@ export const handleSignUp  = async (req: Request, res: Response) => {
 
 
 export const handleGetUser = (req: Request, res: Response) => {
-    res.send("handleGetUser")
+
+    const user = req.user
+
+    res.json({ user })
+
 }
