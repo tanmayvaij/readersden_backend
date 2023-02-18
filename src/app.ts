@@ -18,10 +18,12 @@ app.use(cors())
 
 // importing routers
 import AuthRouter from "./routes/Auth"
+import BookRouter from "./routes/Book"
 
 
 // using routers
 app.use("/api/auth", AuthRouter)
+app.use("/api/book", BookRouter)
 
 
 const start = () => {
