@@ -10,6 +10,10 @@ export const BookSchema = model("book", new Schema({
         type: String,
         required: true
     },
+    book_image: {
+        type: String,
+        required: true
+    },
     book_desc: {
         type: String,
         required: true
