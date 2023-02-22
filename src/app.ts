@@ -26,7 +26,7 @@ app.use("/api/auth", AuthRouter)
 app.use("/api/book", BookRouter)
 
 app.get("/", (req, res) => {
-    res.json("Hello World")
+    res.json(process.env.MONGO_URI)
 })
 
 const start = () => {
@@ -38,8 +38,6 @@ const start = () => {
 
         app.listen(PORT || process.env.PORT, () => {
             console.log("Express server started at port 5000 successfully")
-            console.log(process.env.MONGO_URI);
-            
         })
         
     }
