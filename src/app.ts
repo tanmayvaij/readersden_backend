@@ -38,6 +38,8 @@ const start = () => {
 
         app.listen(PORT || process.env.PORT, () => {
             console.log("Express server started at port 5000 successfully")
+            console.log(process.env.MONGO_URI);
+            
         })
         
     }
