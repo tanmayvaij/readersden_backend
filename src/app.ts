@@ -25,6 +25,9 @@ import BookRouter from "./routes/Book"
 app.use("/api/auth", AuthRouter)
 app.use("/api/book", BookRouter)
 
+app.get("/", (req, res) => {
+    res.json("Hello World")
+})
 
 const start = () => {
 
