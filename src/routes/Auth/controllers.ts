@@ -6,6 +6,8 @@ import { UserSchema } from "./schema"
 
 export const handleSignIn = async (req: Request, res: Response) => {
 
+    console.log("Signin api called")
+
     const { email, password } = req.body
 
     const user = await UserSchema.findOne({ email })
@@ -30,6 +32,8 @@ export const handleSignIn = async (req: Request, res: Response) => {
 
 export const handleSignUp  = async (req: Request, res: Response) => {
 
+    console.log("Signup api called")
+
     const { email } = req.body
 
     const userExists = await UserSchema.findOne({ email })
@@ -47,6 +51,8 @@ export const handleSignUp  = async (req: Request, res: Response) => {
 
 
 export const handleGetUser = (req: Request, res: Response) => {
+
+    console.log("get user api called")
 
     const user = req.user
 

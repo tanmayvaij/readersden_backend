@@ -25,9 +25,14 @@ import BookRouter from "./routes/Book"
 app.use("/api/auth", AuthRouter)
 app.use("/api/book", BookRouter)
 
+
 app.get("/", (req, res) => {
-    res.json(process.env.MONGO_URI)
+
+    console.log("Test api called")
+    res.json("Hello World, This is a test api")
+
 })
+
 
 const start = () => {
 
