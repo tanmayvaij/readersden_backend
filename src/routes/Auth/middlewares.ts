@@ -38,12 +38,22 @@ export const hashPassword = async ( req: Request, res: Response, next: NextFunct
 
 export const verifyUser = ( req: Request, res: Response, next: NextFunction ) => {
 
-    const authtoken = req.header("authtoken") as string
+    try {
 
-    const user = verify(authtoken, process.env.JWT_SECRET as string)
+        const authtoken = req.header("authtoken") as string
 
-    req.user = user
+        const user = verify(authtoken, process.env.JWT_SECRET as string)
+    
+        req.user = user
+    
+        next()
 
-    next()
+    }
+
+    catch (err) {
+
+        return res.json({ success: false, message: err })
+
+    }
 
 }
