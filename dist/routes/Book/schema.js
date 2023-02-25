@@ -31,4 +31,9 @@ exports.BookSchema = (0, mongoose_1.model)("book", new mongoose_1.Schema({
         type: String,
         required: true
     },
+    visible: {
+        type: Boolean,
+        required: true,
+        default: true
+    }
 }));

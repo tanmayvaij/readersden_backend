@@ -22,7 +22,8 @@ const Book_1 = __importDefault(require("./routes/Book"));
 app.use("/api/auth", Auth_1.default);
 app.use("/api/book", Book_1.default);
 app.get("/", (req, res) => {
-    res.json(process.env.MONGO_URI);
+    console.log("Test api called");
+    res.json("Hello World, This is a test api");
 });
 const start = () => {
     try {

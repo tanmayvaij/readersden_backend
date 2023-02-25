@@ -30,5 +30,10 @@ export const BookSchema = model("book", new Schema({
         type: String,
         required: true
     },
+    visible: {
+        type: Boolean,
+        required: true,
+        default: true
+    }
 
 }))

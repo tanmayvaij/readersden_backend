@@ -17,9 +17,14 @@ const hashPassword = async (req, res, next) => {
 };
 exports.hashPassword = hashPassword;
 const verifyUser = (req, res, next) => {
-    const authtoken = req.header("authtoken");
-    const user = (0, jsonwebtoken_1.verify)(authtoken, process.env.JWT_SECRET);
-    req.user = user;
-    next();
+    try {
+        const authtoken = req.header("authtoken");
+        const user = (0, jsonwebtoken_1.verify)(authtoken, process.env.JWT_SECRET);
+        req.user = user;
+        next();
+    }
+    catch (err) {
+        return res.json({ success: false, message: err });
+    }
 };
 exports.verifyUser = verifyUser;

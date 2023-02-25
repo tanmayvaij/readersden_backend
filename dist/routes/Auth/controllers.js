@@ -5,6 +5,7 @@ const bcrypt_1 = require("bcrypt");
 const jsonwebtoken_1 = require("jsonwebtoken");
 const schema_1 = require("./schema");
 const handleSignIn = async (req, res) => {
+    console.log("Signin api called");
     const { email, password } = req.body;
     const user = await schema_1.UserSchema.findOne({ email });
     if (!user)
@@ -23,6 +24,7 @@ const handleSignIn = async (req, res) => {
 };
 exports.handleSignIn = handleSignIn;
 const handleSignUp = async (req, res) => {
+    console.log("Signup api called");
     const { email } = req.body;
     const userExists = await schema_1.UserSchema.findOne({ email });
     if (userExists)
@@ -34,6 +36,7 @@ const handleSignUp = async (req, res) => {
 };
 exports.handleSignUp = handleSignUp;
 const handleGetUser = (req, res) => {
+    console.log("get user api called");
     const user = req.user;
     res.json({ ...user });
 };

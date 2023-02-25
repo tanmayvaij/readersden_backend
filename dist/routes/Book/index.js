@@ -6,4 +6,8 @@ const router = (0, express_1.Router)();
 router.route("/add_book").post(controllers_1.handleAddBook);
 router.route("/get_my_books").post(controllers_1.handleGetMyBooks);
 router.route("/get_all_books").get(controllers_1.handleGetAllBooks);
+router.route("/get_book_by_id").post(controllers_1.handleGetBookById);
+router.route("/delete_book_by_id").post(controllers_1.handleDeleteBookById);
+router.route("/disable_book_view").post(controllers_1.handleDisableBookView);
+router.route("/enable_book_view").post(controllers_1.handleEnableBookView);
 exports.default = router;
