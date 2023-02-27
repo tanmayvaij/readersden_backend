@@ -7,10 +7,10 @@ const schema_1 = require("./schema");
 const handleSignIn = async (req, res) => {
     console.log("Signin api called");
     const { email, password } = req.body;
-    const user = await schema_1.UserSchema.findOne({ email });
+    const user = await schema_1.UserSchema.findOne({ email: email.trim() });
     if (!user)
         return res.json({ success: false, message: `user with ${email} doesn't exists` });
-    const match = await (0, bcrypt_1.compare)(password, user.password);
+    const match = await (0, bcrypt_1.compare)(password.trim(), user.password);
     if (!match)
         return res.json({ status: false, message: "invalid credentials" });
     const payload = {

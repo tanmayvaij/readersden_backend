@@ -3,17 +3,21 @@ import { Response, Request } from "express"
 import { sign } from "jsonwebtoken"
 import { UserSchema } from "./schema"
 
+interface SigninCreds {
+    email: String
+    password: String
+}
 
 export const handleSignIn = async (req: Request, res: Response) => {
 
     console.log("Signin api called")
 
-    const { email, password } = req.body
+    const { email, password } : SigninCreds = req.body
 
-    const user = await UserSchema.findOne({ email })
+    const user = await UserSchema.findOne({ email: email.trim() })
     if (!user) return res.json({ success: false, message: `user with ${email} doesn't exists` })
 
-    const match = await compare(password, user.password as string)
+    const match = await compare(password.trim() as string, user.password as string)
     if (!match) return res.json({ status: false, message: "invalid credentials" })
 
     const payload = {
