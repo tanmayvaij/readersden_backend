@@ -9,7 +9,6 @@ const db_1 = require("./db");
 const cors_1 = __importDefault(require("cors"));
 // inititalised environment variables
 (0, dotenv_1.config)();
-const PORT = 5000 || process.env.PORT;
 const app = (0, express_1.default)();
 // added middlewares
 app.use(express_1.default.urlencoded({ extended: true }));
@@ -29,7 +28,7 @@ const start = () => {
     try {
         // connecting to database
         (0, db_1.connectDB)();
-        app.listen(PORT || process.env.PORT, () => {
+        app.listen(5000 || process.env.PORT, () => {
             console.log("Express server started at port 5000 successfully");
         });
     }

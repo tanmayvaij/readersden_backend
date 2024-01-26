@@ -1,56 +1,42 @@
-import express from "express"
-import { config } from "dotenv"
-import { connectDB } from "./db"
-import cors from "cors"
+import express from "express";
+import { config } from "dotenv";
+import { connectDB } from "./db";
+import cors from "cors";
 
 // inititalised environment variables
-config()
+config();
 
-const PORT = 5000 || process.env.PORT
-
-const app = express()
-
+const app = express();
 
 // added middlewares
-app.use(express.urlencoded({ extended: true }))
-app.use(express.json())
-app.use(cors())
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(cors());
 
 // importing routers
-import AuthRouter from "./routes/Auth"
-import BookRouter from "./routes/Book"
-
+import AuthRouter from "./routes/Auth";
+import BookRouter from "./routes/Book";
 
 // using routers
-app.use("/api/auth", AuthRouter)
-app.use("/api/book", BookRouter)
-
+app.use("/api/auth", AuthRouter);
+app.use("/api/book", BookRouter);
 
 app.get("/", (req, res) => {
-
-    console.log("Test api called")
-    res.json("Hello World, This is a test api")
-
-})
-
+  console.log("Test api called");
+  res.json("Hello World, This is a test api");
+});
 
 const start = () => {
+  try {
+    // connecting to database
+    connectDB();
 
-    try {
+    app.listen(5000 || process.env.PORT, () => {
+      console.log("Express server started at port 5000 successfully");
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
 
-        // connecting to database
-        connectDB()
-
-        app.listen(PORT || process.env.PORT, () => {
-            console.log("Express server started at port 5000 successfully")
-        })
-        
-    }
-
-    catch (err) {
-        console.log(err)
-    }
-
-}
-
-start()
+start();
