@@ -31,7 +31,7 @@ const start = () => {
     // connecting to database
     connectDB();
 
-    app.listen(5000 || process.env.PORT, () => {
+    app.listen(process.env.PORT, () => {
       console.log("Express server started at port 5000 successfully");
     });
   } catch (err) {
